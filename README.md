@@ -1,4 +1,4 @@
-﻿# ðŸ›¡ï¸ blinda-site
+# ðŸ›¡ï¸ blinda-site
 
 <div align="center">
   <img src="capa/logo.svg" alt="Arckhé AI" height="48" />
@@ -8,7 +8,7 @@
 
 **ðŸ‡§ðŸ‡· [PortuguÃªs](README.md) Â· ðŸ‡ºðŸ‡¸ [English](README.en.md) Â· ðŸ‡ªðŸ‡¸ [EspaÃ±ol](README.es.md)**
 
-[![blinda-site](guia/assets/banner.jpg)](https://inematds.github.io/blinda-site/guia/)
+[![blinda-site](guia/assets/banner.jpg)](https://linnoff88-dev.github.io/
 
 ## O que Ã©
 
@@ -18,11 +18,11 @@ O blinda-site Ã© um mÃ©todo para o seu agente de IA (Claude Code ou Codex) p
 
 ## ðŸ“– Guia de uso
 
-Guia completo (landing + passo a passo): **https://inematds.github.io/blinda-site/guia/**
+Guia completo (landing + passo a passo): **https://linnoff88-dev.github.io/
 
 ## Como usar hoje
 
-1. Clone o kit: `git clone https://github.com/inematds/blinda-site ~/projetos/blinda-site`
+1. Clone o kit: `git clone https://github.com/linnoff88-dev/blinda-site ~/projetos/blinda-site`
 2. Abra o Claude Code ou o Codex na pasta do **seu site** e peÃ§a:
    > Siga ~/projetos/blinda-site/METODO.md, etapas 1 a 3. SÃ³ leitura: nÃ£o altere nada fora da pasta blindagem/. Grave blindagem/relatorio.md e blindagem/plano.md.
 3. Leia o relatÃ³rio e o plano, aprove os itens e peÃ§a as etapas 4 (backup) e 5 (simulaÃ§Ã£o).
@@ -50,7 +50,7 @@ Diagnosticar â†’ RelatÃ³rio â†’ Plano â†’ Backup â†’ Simul
 
 ## LicenÃ§a
 
-MIT. Gratuito e aberto â€” [INEMA.CLUB](https://inema.club).
+MIT. Gratuito e aberto â€” [ARCKHÉ AI](https://ARCKHÉ AI).
 
 ---
 

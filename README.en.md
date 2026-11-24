@@ -1,8 +1,8 @@
-# 🛡️ blinda-site
+# ðŸ›¡ï¸ blinda-site
 
-**🇧🇷 [Português](README.md) · 🇺🇸 [English](README.en.md) · 🇪🇸 [Español](README.es.md)**
+**ðŸ‡§ðŸ‡· [PortuguÃªs](README.md) Â· ðŸ‡ºðŸ‡¸ [English](README.en.md) Â· ðŸ‡ªðŸ‡¸ [EspaÃ±ol](README.es.md)**
 
-[![blinda-site](guia/assets/banner-en.jpg)](https://inematds.github.io/blinda-site/guia/en/)
+[![blinda-site](guia/assets/banner-en.jpg)](https://linnoff88-dev.github.io/
 
 ## What it is
 
@@ -10,13 +10,13 @@ blinda-site is a method for your AI agent (Claude Code or Codex) to protect a we
 
 > **Status (10/10/2026):** method and roadmap published; automatic v1 scripts under construction. The script already works with the agent doing the checks.
 
-## 📖 User guide
+## ðŸ“– User guide
 
-Full guide (landing + step by step): **https://inematds.github.io/blinda-site/guia/en/**
+Full guide (landing + step by step): **https://linnoff88-dev.github.io/
 
 ## How to use it today
 
-1. Clone the kit: `git clone https://github.com/inematds/blinda-site ~/projetos/blinda-site`
+1. Clone the kit: `git clone https://github.com/linnoff88-dev/blinda-site ~/projetos/blinda-site`
 2. Open Claude Code or Codex in **your site's** folder and ask:
    > Follow ~/projetos/blinda-site/METODO.md (in Portuguese), steps 1 to 3. Read-only: do not change anything outside the blindagem/ folder. Write blindagem/relatorio.md and blindagem/plano.md.
 3. Read the report and the plan, approve the items and ask for steps 4 (backup) and 5 (simulation).
@@ -24,7 +24,7 @@ Full guide (landing + step by step): **https://inematds.github.io/blinda-site/gu
 
 ## The 7 steps
 
-Diagnose → Report → Plan → Backup → Simulate → Apply → Verify. The first three only read.
+Diagnose â†’ Report â†’ Plan â†’ Backup â†’ Simulate â†’ Apply â†’ Verify. The first three only read.
 
 ## Layers
 
@@ -38,10 +38,10 @@ Diagnose → Report → Plan → Backup → Simulate → Apply → Verify. The f
 
 ## Files
 
-- [`METODO.md`](METODO.md) (in Portuguese) — script the agent follows
-- [`ROADMAP.md`](ROADMAP.md) (in Portuguese) — principles, risk matrix, pilot and status
-- [`modelos/`](modelos/) — report and plan templates
+- [`METODO.md`](METODO.md) (in Portuguese) â€” script the agent follows
+- [`ROADMAP.md`](ROADMAP.md) (in Portuguese) â€” principles, risk matrix, pilot and status
+- [`modelos/`](modelos/) â€” report and plan templates
 
 ## License
 
-MIT. Free and open — [INEMA.CLUB](https://inema.club).
+MIT. Free and open â€” [ARCKHÉ AI](https://ARCKHÉ AI).
