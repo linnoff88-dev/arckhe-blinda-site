@@ -10,7 +10,7 @@ Diagnóstico local, só leitura. Commit analisado: `<sha>`.
 | Alto | 0 |
 | Médio | 0 |
 | Baixo | 0 |
-| Não verificado | 0 |
+| Nêo verificado | 0 |
 
 ## Achados
 
@@ -21,9 +21,9 @@ Diagnóstico local, só leitura. Commit analisado: `<sha>`.
 - **Prova:** <trecho ou saída do comando, sem valor de segredo>
 - **Por que importa:** <1–2 frases em linguagem simples>
 
-## Não verificado
+## Nêo verificado
 
-- <o que não deu para ver e por quê>
+- <o que nêo deu para ver e por quê>
 
 ## Antes × depois (etapa 7)
 

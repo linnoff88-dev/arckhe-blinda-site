@@ -1,95 +1,95 @@
-# Roadmap â€” blinda-site
+# Roadmap ê¢â¬â blinda-site
 
-> Estado em 10/10/2026: **mÃ©todo e roadmap publicados; scripts da v1 em construÃ§Ã£o.** Nada aqui ainda roda sozinho: hoje o mÃ©todo Ã© seguido pelo agente (Claude Code ou Codex) lendo o `METODO.md`.
+> Estado em 10/10/2026: **mêÂ©todo e roadmap publicados; scripts da v1 em construêÂ§êÂ£o.** Nada aqui ainda roda sozinho: hoje o mêÂ©todo êÂ© seguido pelo agente (Claude Code ou Codex) lendo o `METODO.md`.
 
 ## Por que existe
 
-Em 10/10/2026 um scanner externo deu nota D (46/100) ao ARCKHÉ AI. As correÃ§Ãµes foram pequenas, mas o caso mostrou trÃªs coisas:
+Em 10/10/2026 um scanner externo deu nota D (46/100) ao ARCKHê AI. As correêÂ§êÂµes foram pequenas, mas o caso mostrou trêÂªs coisas:
 
-- O problema mais sÃ©rio nem estava no site testado: **pay.ARCKHÉ.pro** (o checkout) nÃ£o enviava nenhum cabeÃ§alho de seguranÃ§a.
-- Varrer o site de fora tem limite (lÃª 1 pÃ¡gina) e, em site de terceiros, pode parecer invasÃ£o.
-- Corrigir sem mÃ©todo quebra coisas: a CSP "completa" teria tirado o cache do portal.
+- O problema mais sêÂ©rio nem estava no site testado: **pay.ARCKHê.pro** (o checkout) nêÂ£o enviava nenhum cabeêÂ§alho de seguranêÂ§a.
+- Varrer o site de fora tem limite (lêÂª 1 pêÂ¡gina) e, em site de terceiros, pode parecer invasêÂ£o.
+- Corrigir sem mêÂ©todo quebra coisas: a CSP "completa" teria tirado o cache do portal.
 
-O blinda-site faz o caminho inverso: **olha por dentro, sÃ³ no projeto local**, diagnostica, planeja, faz backup, simula e sÃ³ entÃ£o aplica.
+O blinda-site faz o caminho inverso: **olha por dentro, sêÂ³ no projeto local**, diagnostica, planeja, faz backup, simula e sêÂ³ entêÂ£o aplica.
 
-## PrincÃ­pios
+## PrincêÂ­pios
 
-1. **SÃ³ local, sÃ³ leitura no diagnÃ³stico.** O kit lÃª cÃ³digo, config, lockfile e histÃ³rico do git na mÃ¡quina do dono. NÃ£o faz requisiÃ§Ã£o ao site no ar, a menos que o dono peÃ§a e seja o site dele.
-2. **Backup antes de tudo.** Nenhuma alteraÃ§Ã£o sem um estado limpo salvo (commit + branch `blindagem/<data>`, ou worktree).
-3. **Simular antes de aplicar.** Build + servidor local + leitura dos cabeÃ§alhos + navegador vendo o console.
-4. **Dois eixos de risco.** A gravidade do achado e o risco da correÃ§Ã£o sÃ£o medidos separadamente.
-5. **Dizer "nÃ£o verificado" em vez de "tudo certo".** Se o kit nÃ£o consegue ver algo (ex.: tabela criada no painel do Supabase), o relatÃ³rio diz isso.
-6. **Arriscado sempre pergunta.** CorreÃ§Ã£o marcada como arriscada sÃ³ Ã© aplicada com o ok do dono no momento.
+1. **SêÂ³ local, sêÂ³ leitura no diagnêÂ³stico.** O kit lêÂª cêÂ³digo, config, lockfile e histêÂ³rico do git na mêÂ¡quina do dono. NêÂ£o faz requisiêÂ§êÂ£o ao site no ar, a menos que o dono peêÂ§a e seja o site dele.
+2. **Backup antes de tudo.** Nenhuma alteraêÂ§êÂ£o sem um estado limpo salvo (commit + branch `blindagem/<data>`, ou worktree).
+3. **Simular antes de aplicar.** Build + servidor local + leitura dos cabeêÂ§alhos + navegador vendo o console.
+4. **Dois eixos de risco.** A gravidade do achado e o risco da correêÂ§êÂ£o sêÂ£o medidos separadamente.
+5. **Dizer "nêÂ£o verificado" em vez de "tudo certo".** Se o kit nêÂ£o consegue ver algo (ex.: tabela criada no painel do Supabase), o relatêÂ³rio diz isso.
+6. **Arriscado sempre pergunta.** CorreêÂ§êÂ£o marcada como arriscada sêÂ³ êÂ© aplicada com o ok do dono no momento.
 
 ## As 7 etapas
 
 | # | Etapa | O que faz | Altera o projeto? |
 |---|---|---|---|
-| 1 | Diagnosticar | Roda as checagens das camadas | NÃ£o |
-| 2 | RelatÃ³rio | `blindagem/relatorio.md`: achado, prova, gravidade | SÃ³ cria a pasta `blindagem/` |
-| 3 | Plano | `blindagem/plano.md`: correÃ§Ã£o, risco de aplicar, ordem | SÃ³ a pasta `blindagem/` |
+| 1 | Diagnosticar | Roda as checagens das camadas | NêÂ£o |
+| 2 | RelatêÂ³rio | `blindagem/relatorio.md`: achado, prova, gravidade | SêÂ³ cria a pasta `blindagem/` |
+| 3 | Plano | `blindagem/plano.md`: correêÂ§êÂ£o, risco de aplicar, ordem | SêÂ³ a pasta `blindagem/` |
 | 4 | Backup | commit do estado limpo + branch `blindagem/<data>` (ou `git worktree`) | Git apenas |
-| 5 | Simular | aplica numa cÃ³pia/branch, build, sobe em porta livre, confere cabeÃ§alhos e console | Na cÃ³pia |
-| 6 | Aplicar | sÃ³ os itens aprovados, um por vez, com commit cada | Sim |
-| 7 | Verificar | repete o diagnÃ³stico e grava o antes Ã— depois | SÃ³ `blindagem/` |
+| 5 | Simular | aplica numa cêÂ³pia/branch, build, sobe em porta livre, confere cabeêÂ§alhos e console | Na cêÂ³pia |
+| 6 | Aplicar | sêÂ³ os itens aprovados, um por vez, com commit cada | Sim |
+| 7 | Verificar | repete o diagnêÂ³stico e grava o antes êâ depois | SêÂ³ `blindagem/` |
 
 ## Matriz de risco
 
-**Gravidade do achado:** crÃ­tico Â· alto Â· mÃ©dio Â· baixo.
-**Risco da correÃ§Ã£o:** seguro Â· moderado Â· arriscado.
+**Gravidade do achado:** crêÂ­tico êÂ· alto êÂ· mêÂ©dio êÂ· baixo.
+**Risco da correêÂ§êÂ£o:** seguro êÂ· moderado êÂ· arriscado.
 
 | | Seguro | Moderado | Arriscado |
 |---|---|---|---|
-| **CrÃ­tico** | faz primeiro | faz, testando | pergunta antes |
-| **Alto / MÃ©dio** | faz | faz, testando | pergunta antes |
+| **CrêÂ­tico** | faz primeiro | faz, testando | pergunta antes |
+| **Alto / MêÂ©dio** | faz | faz, testando | pergunta antes |
 | **Baixo** | faz se for barato | anota | anota |
 
 Exemplos reais (piloto 10/10/2026):
 
-| Achado | Gravidade | CorreÃ§Ã£o | Risco da correÃ§Ã£o |
+| Achado | Gravidade | CorreêÂ§êÂ£o | Risco da correêÂ§êÂ£o |
 |---|---|---|---|
-| Checkout sem nenhum cabeÃ§alho de seguranÃ§a | alto | cabeÃ§alhos + CSP mÃ­nima | seguro |
-| Next.js 16.1.6 na faixa de alertas | mÃ©dio | patch 16.3.8 | seguro |
-| Next.js 14 sem novas correÃ§Ãµes | alto | migrar 14 â†’ 16 | arriscado |
-| Sem CSP | mÃ©dio | CSP mÃ­nima (frame-ancestors, object-src, base-uri, form-action) | seguro |
-| Sem CSP de scripts | mÃ©dio | `script-src` com nonce | arriscado (tira o cache estÃ¡tico) |
-| Chave secreta no git | crÃ­tico | trocar a chave | moderado |
-| Chave secreta no histÃ³rico | crÃ­tico | reescrever o histÃ³rico | arriscado |
+| Checkout sem nenhum cabeêÂ§alho de seguranêÂ§a | alto | cabeêÂ§alhos + CSP mêÂ­nima | seguro |
+| Next.js 16.1.6 na faixa de alertas | mêÂ©dio | patch 16.3.8 | seguro |
+| Next.js 14 sem novas correêÂ§êÂµes | alto | migrar 14 ê¢â â 16 | arriscado |
+| Sem CSP | mêÂ©dio | CSP mêÂ­nima (frame-ancestors, object-src, base-uri, form-action) | seguro |
+| Sem CSP de scripts | mêÂ©dio | `script-src` com nonce | arriscado (tira o cache estêÂ¡tico) |
+| Chave secreta no git | crêÂ­tico | trocar a chave | moderado |
+| Chave secreta no histêÂ³rico | crêÂ­tico | reescrever o histêÂ³rico | arriscado |
 
 ## Camadas
 
 ### v1
-1. **CabeÃ§alhos e config** â€” `next.config.*`, `vercel.json`, `netlify.toml`, `_headers`, middleware. Confere CSP, X-Frame-Options, nosniff, Referrer-Policy, HSTS, `poweredByHeader`.
-2. **DependÃªncias** â€” `npm audit` sobre o lockfile, versÃ£o do framework e se a linha ainda recebe correÃ§Ãµes.
-3. **Segredos** â€” `.env*` rastreado ou no histÃ³rico do git, padrÃµes de chave no cÃ³digo, variÃ¡vel secreta exposta ao navegador (`NEXT_PUBLIC_*`, `VITE_*` com nome de segredo), `.gitignore`.
-4. **Banco e login (Supabase)** â€” tabelas sem RLS nas migrations de `supabase/`, `service_role` no cÃ³digo do front, rotas de API sem checagem de sessÃ£o.
-   - Sem migrations locais â†’ **"nÃ£o verificado"**.
-   - Opcional: consulta sÃ³ leitura pelo Supabase CLI com a credencial do prÃ³prio dono.
+1. **CabeêÂ§alhos e config** ê¢â¬â `next.config.*`, `vercel.json`, `netlify.toml`, `_headers`, middleware. Confere CSP, X-Frame-Options, nosniff, Referrer-Policy, HSTS, `poweredByHeader`.
+2. **DependêÂªncias** ê¢â¬â `npm audit` sobre o lockfile, versêÂ£o do framework e se a linha ainda recebe correêÂ§êÂµes.
+3. **Segredos** ê¢â¬â `.env*` rastreado ou no histêÂ³rico do git, padrêÂµes de chave no cêÂ³digo, variêÂ¡vel secreta exposta ao navegador (`NEXT_PUBLIC_*`, `VITE_*` com nome de segredo), `.gitignore`.
+4. **Banco e login (Supabase)** ê¢â¬â tabelas sem RLS nas migrations de `supabase/`, `service_role` no cêÂ³digo do front, rotas de API sem checagem de sessêÂ£o.
+   - Sem migrations locais ê¢â â **"nêÂ£o verificado"**.
+   - Opcional: consulta sêÂ³ leitura pelo Supabase CLI com a credencial do prêÂ³prio dono.
 
 ### v2
-5. **CÃ³digo** â€” o agente lÃª e aponta: `dangerouslySetInnerHTML`, redirect aberto, upload sem limite, `eval`. Sem nota automÃ¡tica no inÃ­cio.
-- Modo CI (roda no GitHub Actions a cada push, sÃ³ diagnÃ³stico).
+5. **CêÂ³digo** ê¢â¬â o agente lêÂª e aponta: `dangerouslySetInnerHTML`, redirect aberto, upload sem limite, `eval`. Sem nota automêÂ¡tica no inêÂ­cio.
+- Modo CI (roda no GitHub Actions a cada push, sêÂ³ diagnêÂ³stico).
 
 ### v3
-- Painel com o histÃ³rico das notas de cada site.
+- Painel com o histêÂ³rico das notas de cada site.
 
-## Piloto (sites do ARCKHÉ)
+## Piloto (sites do ARCKHê)
 
-| Ordem | Site | Repo | Por quÃª |
+| Ordem | Site | Repo | Por quêÂª |
 |---|---|---|---|
-| 1 | pay.ARCKHÉ.pro | ARCKHÉpro-mono/apps/pay | checkout; estava sem cabeÃ§alhos |
-| 2 | ARCKHÉ AI | portal | maior trÃ¡fego; jÃ¡ corrigido no dia 10/10 (serve de referÃªncia) |
-| 3 | ARCKHÉ.vip | ARCKHÉVIPw/ARCKHÉ-vip-landing | estÃ¡tico (Vite) â€” testa o caminho sem Next |
-| 4 | eventos.ARCKHÉ.pro | ARCKHÉeventos | muitas pÃ¡ginas e scripts |
+| 1 | pay.ARCKHê.pro | ARCKHêpro-mono/apps/pay | checkout; estava sem cabeêÂ§alhos |
+| 2 | ARCKHê AI | portal | maior trêÂ¡fego; jêÂ¡ corrigido no dia 10/10 (serve de referêÂªncia) |
+| 3 | ARCKHê.vip | ARCKHêVIPw/ARCKHê-vip-landing | estêÂ¡tico (Vite) ê¢â¬â testa o caminho sem Next |
+| 4 | eventos.ARCKHê.pro | ARCKHêeventos | muitas pêÂ¡ginas e scripts |
 
 ## Status
 
 | Item | Estado |
 |---|---|
-| MÃ©todo (`METODO.md`) | publicado (rascunho v0) |
+| MêÂ©todo (`METODO.md`) | publicado (rascunho v0) |
 | Roadmap | publicado |
-| CorreÃ§Ãµes manuais de 10/10 (portal, pro, pay, vip) | feitas |
-| Scripts camada 1â€“4 | a fazer |
-| Modelos de relatÃ³rio e plano | rascunho em `modelos/` |
+| CorreêÂ§êÂµes manuais de 10/10 (portal, pro, pay, vip) | feitas |
+| Scripts camada 1ê¢â¬â4 | a fazer |
+| Modelos de relatêÂ³rio e plano | rascunho em `modelos/` |
 | Skill (`SKILL.md`) | a fazer, depois dos scripts |
 | Piloto pelo kit | a fazer |

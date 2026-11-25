@@ -1,14 +1,14 @@
 # Método blinda-site (v0 — rascunho)
 
-Instruções para o agente (Claude Code ou Codex) proteger um site **olhando por dentro**, no projeto local. Enquanto os scripts da v1 não ficam prontos, o agente faz as checagens à mão seguindo este roteiro.
+Instruções para o agente (Claude Code ou Codex) proteger um site **olhando por dentro**, no projeto local. Enquanto os scripts da v1 nêo ficam prontos, o agente faz as checagens à mêo seguindo este roteiro.
 
 ## Regras fixas
 
-- Trabalhar só na pasta do projeto, na máquina do dono. **Não** varrer o site no ar nem sites de terceiros.
-- Etapas 1–3 não alteram nada fora de `blindagem/`.
+- Trabalhar só na pasta do projeto, na máquina do dono. **Nêo** varrer o site no ar nem sites de terceiros.
+- Etapas 1–3 nêo alteram nada fora de `blindagem/`.
 - Antes da etapa 5, backup obrigatório.
-- Correção **arriscada** só com ok explícito do dono, no momento.
-- O que não deu para ver vira **"não verificado"**, nunca "ok".
+- Correçêo **arriscada** só com ok explícito do dono, no momento.
+- O que nêo deu para ver vira **"nêo verificado"**, nunca "ok".
 - Nunca imprimir o valor de um segredo encontrado: mostrar arquivo, linha e os 4 primeiros caracteres.
 
 ## 1. Diagnosticar (só leitura)
@@ -21,29 +21,29 @@ Instruções para o agente (Claude Code ou Codex) proteger um site **olhando por
 
 **Camada 2 — Dependências**
 - `npm audit --omit=dev --json` (usa só o lockfile) e resumir por gravidade.
-- Versão instalada do framework (`node -p "require('next/package.json').version"`) e o último patch da mesma linha (`npm view next versions`). Se a linha parou, marcar "migração".
-- Preferir o último patch da linha atual; evitar versão com menos de 1 semana.
+- Versêo instalada do framework (`node -p "require('next/package.json').version"`) e o último patch da mesma linha (`npm view next versions`). Se a linha parou, marcar "migraçêo".
+- Preferir o último patch da linha atual; evitar versêo com menos de 1 semana.
 
 **Camada 3 — Segredos**
 - `git ls-files | grep -E '(^|/)\.env'` → `.env` rastreado = crítico.
 - `git log --all --diff-filter=A --name-only -- '*.env*'` → já esteve no histórico.
 - Procurar padrões de chave no código rastreado (`sk-`, `sk_live_`, `AKIA`, `eyJhbGci` de `service_role`, `-----BEGIN`).
-- Variável exposta ao navegador com nome de segredo: `NEXT_PUBLIC_*SECRET*`, `NEXT_PUBLIC_*SERVICE_ROLE*`, `VITE_*KEY*` (anon key do Supabase é pública por natureza; `service_role` não).
+- Variável exposta ao navegador com nome de segredo: `NEXT_PUBLIC_*SECRET*`, `NEXT_PUBLIC_*SERVICE_ROLE*`, `VITE_*KEY*` (anon key do Supabase é pública por natureza; `service_role` nêo).
 - `.gitignore` cobre `.env*`?
 
 **Camada 4 — Banco e login (Supabase)**
 - Se existe `supabase/migrations/`: para cada `create table`, há `enable row level security` e pelo menos uma `create policy`? Tabela sem RLS = crítico.
-- Sem migrations → "não verificado" + sugestão: rodar com a credencial do dono `supabase db dump --schema public` (só leitura) ou checar no painel.
+- Sem migrations → "nêo verificado" + sugestêo: rodar com a credencial do dono `supabase db dump --schema public` (só leitura) ou checar no painel.
 - `service_role` usada em arquivo que vai para o navegador (`'use client'`, `src/` do Vite) = crítico.
-- Rotas de API (`app/api/**/route.ts`, `pages/api/**`) que leem/escrevem dados sem checar sessão = alto.
+- Rotas de API (`app/api/**/route.ts`, `pages/api/**`) que leem/escrevem dados sem checar sessêo = alto.
 
 ## 2. Relatório
 
-Gravar `blindagem/relatorio.md` a partir de `modelos/relatorio.md`: cada achado com camada, arquivo:linha, prova, gravidade e "não verificado" quando for o caso.
+Gravar `blindagem/relatorio.md` a partir de `modelos/relatorio.md`: cada achado com camada, arquivo:linha, prova, gravidade e "nêo verificado" quando for o caso.
 
 ## 3. Plano
 
-Gravar `blindagem/plano.md` a partir de `modelos/plano.md`: cada correção com o achado que resolve, risco da correção (seguro/moderado/arriscado), o que pode quebrar e como testar. Ordem pela matriz do `ROADMAP.md`. Mostrar o plano ao dono e esperar o ok.
+Gravar `blindagem/plano.md` a partir de `modelos/plano.md`: cada correçêo com o achado que resolve, risco da correçêo (seguro/moderado/arriscado), o que pode quebrar e como testar. Ordem pela matriz do `ROADMAP.md`. Mostrar o plano ao dono e esperar o ok.
 
 ## 4. Backup
 
@@ -51,7 +51,7 @@ Gravar `blindagem/plano.md` a partir de `modelos/plano.md`: cada correção com 
 git status --short            # sujo de outra pessoa? parar e perguntar
 git switch -c blindagem/$(date +%F)
 ```
-Se o working tree tiver mudanças que não são suas, usar `git worktree add ../<projeto>-blindagem` e trabalhar lá.
+Se o working tree tiver mudanças que nêo sêo suas, usar `git worktree add ../<projeto>-blindagem` e trabalhar lá.
 
 ## 5. Simular
 
